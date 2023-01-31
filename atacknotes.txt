@@ -1,27 +1,5 @@
 NOTES
 
------
-
-wumpus:   Focus on user problems, actual bugs, and "used, but untested" methods
-          that affect outcomes and need tests
-
-          What kind of frustrates me, personally, is that we didn't manage to
-          clearly separate out the consensus parts. Not to a library (which
-          would be useful for rust-bitcoin et al), but also not even to a
-          separate directory.
-
-          I think it's important to isolate the consensus code soon, and be
-          extremely careful about that. I'm not sure we can be careful
-          enough. yes, I think isolating the consensus code would be most bang
-          for buck with regard to risk minimalization. make it clear which areas
-          of the code are the really risky ones that could break bitcoin as a
-          thing. bitcoin core is too big.
-
-          We should be especially careful with testing on compiler updates,
-          especially the Windows one. It's a low tier platform for GCC and time
-          after time it's clear that it cannot be assumed even basic things keep
-          working with a new version.
------
 
 jnewbery: Review 5-10 PRs per PR made
           3-4 ACKs before merging is good
@@ -135,6 +113,21 @@ practicalswift: C++ undefined, unspecified and implementation-defined behavior:
           git diff origin/pull/18588/head
 
           grep -cr encourage _site/en/newsletters | sort -r -n -t ":" -k 2 | head
+
+          To safely merge a git branch (eg test) into master locally
+          git checkout master
+          git pull
+          git checkout test
+          git pull
+          git rebase -i master
+          git checkout master
+          git merge test
+          Rebasing replays changes from one line of work onto another in the order they were introduced, whereas merging takes the endpoints and merges them together.
+          More details on rebasing ....https://git-scm.com/book/en/v2/Git-Branching-Rebasing
+
+          WARNING!!!
+          Do not rebase commits that exist outside your repository and that people may have based work on.
+-----
 -----
 
           Bitcoin Core daily coverage reports
