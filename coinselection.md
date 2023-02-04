@@ -22,7 +22,7 @@ Here, coin selection is done by sorting all UTXOs by value and running 1000 iter
 
 **How it works in detail**
 
-Given that Target means amount to be spent, UTXO means Unspent Transaction Output 
+Given that Target means amount to be spent, and UTXO means Unspent Transaction Output ,
 
 1. If any of your UTXO matches the Target it will be used.
 2. If the "sum of all your UTXO smaller than the Target" happens to match the Target, they will be used. (This is the case if you sweep a complete wallet.)
@@ -82,7 +82,7 @@ Bitcoin Core finds that UTXO_D is the smallest UTXO greater than the Target, and
 
 2. Branch and Bound (BnB)
 
-Branch and Bound deterministically search the UTXO pool's combination space for the least wasteful change-avoidant input set.The goal of avoiding change outputs whenever possible is to improve on-chain privacy. We also use less fees and reduce overall size of the UTXO set when transactions have no change outputs. This solver is not guaranteed to find a solution even when there are sufficient funds since an exact match may not exist.In that case, Bitcoin Core fall back to using the Knapsack solver described above. More about Branch and Bound can be found in this [paper](http://murch.one/wp-content/uploads/2016/11/erhardt2016coinselection.pdf) by Mark Erhardt
+Branch and Bound deterministically searches the UTXO pool's combination space for the least wasteful change-avoidant input set.The goal of avoiding change outputs whenever possible is to improve on-chain privacy. We also use less fees and reduce overall size of the UTXO set when transactions have no change outputs. This solver is not guaranteed to find a solution even when there are sufficient funds since an exact match may not exist.In that case, Bitcoin Core fall back to using the Knapsack solver described above. More about Branch and Bound can be found in this [paper](http://murch.one/wp-content/uploads/2016/11/erhardt2016coinselection.pdf) by Mark Erhardt
 
 #### Pros of Branch and Bound
 - Creates no change output which reduces current fees, future fees, cuts transaction graph for wallet, and has consolidatory effect on wallet's UTXO pool
