@@ -56,8 +56,9 @@ The :copy command (and its shorthand :t) lets us duplicate one or more lines fro
 :4t. -> copy contents of line 4 to current(where cursor is)
 :t$ -> copy current line to end of file
 :m command is similar to :t command; where :t copies,:m cuts
-:split command splits horizontally
-:vs command splits vertically
+:sp {file} command splits window horizontally, loading {file} into new window
+:vs {file} command splits vertically, loading {file} into new window
+
 :e# takes you to the previous file stored in the buffer
 :!ls shows contents of current directory 
 
@@ -84,21 +85,36 @@ We can traverse the buffer list using four commands—:bprev and :bnext to move 
 
 The argument list (:args) represents the list of files that gets passed as an argument when we run the vim command.We can change the contents of the argument list at any time, which means that the :args listing doesn’t necessarily reflect the values that were passed to the vim command when we launched the editor
 
+The argument list is simpler to manage than the buffer list, making it the ideal place to group our buffers into a collection. With the :args {arglist} command, we can clear the argument list and then repopulate it from scratch with a single command. We can traverse the files in the argument list using :next and :prev commands. Or we can use :argdo to execute the same command on each buffer in the set
+
+Command           | Effect
+
+<c-w>w            | Cycle between open windows
+<c-w>h            | Focus the window to the left
+<c-w>j            | Focus the window below
+<c-w>h            | Focus the window above
+<c-w>l            | Focus the window to the right
+<c-w>c            | Close the active window
+<c-w>o            | Keep only active window ,closing all others
+:tabe {filename}  | Open {filename} in a new tab
+:tabc             | Close current tab page and all of its windows
+:tabo             | Keep the active tab page, closing all others
+
 todos:
 
-- dailyinterviewpro -> Analyse problem from alreadySolved folder
+- dailyinterviewpro -> analyse problem from alreadysolved folder
 - explore vim tutor and make notes
 - write medium article about the power of (.) and (*) in vim, and tips & tricks of these symbols when in visual mode
-- write medium article about the REPLACE mode
-- write medium article about the story of the Etymology of Vim -> refer to chpt 5 of practical vim
+- write medium article about the replace mode
+- write medium article about the story of the etymology of vim -> refer to chpt 5 of practical vim
 -
-Pro tips
+pro tips
 
-- pressing A to enter insert mode is better than pressing i
+- pressing a to enter insert mode is better than pressing i
 
 
 today
-- dailyinterviewpro -> Analyse problem from alreadySolved folder
+- dailyinterviewpro -> analyse problem from alreadysolved folder
 - finish and publish my article
 - push part 1 of lightning web app
 
