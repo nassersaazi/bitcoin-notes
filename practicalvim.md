@@ -100,6 +100,21 @@ Command           | Effect
 :tabc             | Close current tab page and all of its windows
 :tabo             | Keep the active tab page, closing all others
 
+
+Chapter 7 (Open files and save them to disk)
+
+Command        | Effect
+
+:e.            | Open file explorer for current working directory
+:Explore       | Open file explorer for the directory of the active buffer
+:Sexplore      | Open file explorer in horizontal split window
+:Vexplore      | Open file explorer in vertical split window
+
+The % symbol has special meaning on Vim’s command line: it expands to represent the path of the current buffer
+
+
+Chapter 8(Navigate Inside Files with Motions)
+
 todos:
 
 - dailyinterviewpro -> analyse problem from alreadysolved folder
