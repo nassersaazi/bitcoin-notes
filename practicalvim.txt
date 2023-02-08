@@ -115,33 +115,90 @@ The % symbol has special meaning on Vim’s command line: it expands to represen
 
 Chapter 8(Navigate Inside Files with Motions)
 
+Vim is optimized for the touch typist
+Real lines vs Display lines: -> The j and k commands move down and up by real lines, whereas the gj and gk commands move down and up by display lines
+
+Command      | Effect
+
+j            | Down one real line
+gj           | Down one display line
+k            | Up one real line
+gk           | Up one display line
+0            | To first character of real line
+g0           | To first character of display line
+^            | To first nonblank character of real line
+g^           | To first nonblank character of display line
+$            | To end of real line
+g$           | To end of display line
+
+Note the pattern: j , k , 0 , and $ all interact with real lines, while prefixing any of these with g tells Vim to act on display lines instead.
+
+w            | Forward to the next word
+b            | Backward to start of current/next word
+e            | Forward to end of current/next word
+ea           | Append to end of current word
+
+
+f{char}      | Forward to the next occurrence of {char}
+F{char}      | Backward to the previous occurrence of {char}
+t{char}      | Forward to the character before the next occurrence of {char}
+T{char}      | Backward to the character after the previous occurrence of {char}
+;            | Repeat the last character-search command
+,            | Reverse the last character-search command
+%            | Jump between opening and closing sets of parentheses. It works with (),{} and []
+
+d/mo         | Delete all characters from where cursor is till the first occurence of characters {mo}
+
+
+vaw/daw      | sample motions on a word
+vas/das      | sample motions on a sentence
+vap/dap      | sample motions on a paragraph
+
+we’re not limited to using the search command in normal mode. We can use it from Visual and Operator-Pending modes just as well to do real work
+
+Text objects prefixed with i (e.g vi{}) select inside the delimiters, whereas those that are prefixed with a (e.g va{}) select everything including the delimiters. As a mnemonic, think of i as inside and a as around (or all)
+
+The iw text object interacts with everything from the first to the last character of the current word. The aw text object does the same, but it extends the range to include any whitespace characters after or before the word, if whitespace is present.
+
+Vim ships with a plugin called matchit, which enhances the functionality of the % command. When this plugin is enabled, the % command can jump between matching pairs of keywords. For example, in an HTML file, the % command would jump between opening and closing tags
+
+Even though matchit ships with the Vim distribution, it’s not enabled by default.  This minimal vimrc would make Vim autoload the matchit plugin on startup:
+
+set nocompatible
+filetype plugin on
+runtime macros/matchit.vim
+
+
+Vim’s marks allow us to jump quickly to locations of interest within a document.
+We can set marks manually, but Vim also keeps track of certain points of
+interest for us automatically.
+
+Vim's automatic marks
+
+Keystrokes  | Buffer Contents
+
+``          | Position before the last jump within current file
+`.          | Location of last change
+`^          | Location of last insertion
+`[          | start of last change or yank
+`]          | End of last change or yank
+`<          | Start of last visual selection
+`>          | End of last visual selection
+
+Chapter 9(Navigate Between Files with Jumps)
+
 todos:
 
+- check out surround.vim plugin(http://github.com/tpope/vim-surround)
+- write article about how vim helped me improve my workflow to contribute to oss(btc-from the cmdline) -> publish it after opening PR
 - dailyinterviewpro -> analyse problem from alreadysolved folder
 - explore vim tutor and make notes
 - write medium article about the power of (.) and (*) in vim, and tips & tricks of these symbols when in visual mode
 - write medium article about the replace mode
+- write medium article (find by character, the quickest way to move around in Vim) -> reference....Tip 50,Practical Vim
 - write medium article about the story of the etymology of vim -> refer to chpt 5 of practical vim
--
-pro tips
+- create vim version of crontab gru in python(django)
 
-- pressing a to enter insert mode is better than pressing i
-
-
-today
-- dailyinterviewpro -> analyse problem from alreadysolved folder
-- finish and publish my article
-- push part 1 of lightning web app
-
-tomorrow
-- learnbtcfrmcommandline
-
-
-one thing i particularly find amusing about vim is its modes. Unlike other editor where Insert/Editing mode
-is the default. Normal mode is Vim's default and most times you don't need to switch from Normal mode to get stuff done
-
-going through the bitcoin code base is the ultimate 'Alice in Wonderland' experience. One particular area i found interesting to 
-dig deep into is coin selection in the bitcoin wallet...
 
   ...We're waiting for copy before the site can go live, ,;
   ...If you are copy with this, let's go ahead with it...;
