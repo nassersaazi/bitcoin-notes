@@ -115,8 +115,7 @@ The % symbol has special meaning on Vim’s command line: it expands to represen
 
 Chapter 8(Navigate Inside Files with Motions)
 
-Vim is optimized for the touch typist
-Real lines vs Display lines: -> The j and k commands move down and up by real lines, whereas the gj and gk commands move down and up by display lines
+Vim is optimized for the touch typist Real lines vs Display lines: -> The j and k commands move down and up by real lines, whereas the gj and gk commands move down and up by display lines
 
 Command      | Effect
 
@@ -169,9 +168,7 @@ filetype plugin on
 runtime macros/matchit.vim
 
 
-Vim’s marks allow us to jump quickly to locations of interest within a document.
-We can set marks manually, but Vim also keeps track of certain points of
-interest for us automatically.
+Vim’s marks allow us to jump quickly to locations of interest within a document.  We can set marks manually, but Vim also keeps track of certain points of interest for us automatically.
 
 Vim's automatic marks
 
@@ -187,9 +184,32 @@ Keystrokes  | Buffer Contents
 
 Chapter 9(Navigate Between Files with Jumps)
 
+- the commands g; and g, traverse through the change list
+- use ctrl+i and ctrl+o to traverse through the jump list
+
+- Motions move within a file whereas jumps move between files
+- if we leave insert mode and then scroll around the document, we can quickly carry on where we left off by pressing gi command
+- Vim maintains a change list for each individual buffer in an editing session.  By contrast, a separate jump list is created for each window
+- when gf command is used, Vim checks each of the directories listed in ‘path’ to see if it contains a filename that matches the text under the cursor
+
+- While the jump list and change list are like breadcrumb trails that allow us to retrace our steps, the gf command lets us navigate the entire codebase
+
+Snapping between files using global marks:
+- A global mark is a kind of bookmark that allows us to jump btn files. Marks are especially useful for snapping(switching) back to a file after exploring a codebase.
+- The m{letter} command allows us to create a mark at the current cursor position
+- Lowercase letters create marks that are local to a buffer, whereas uppercase letters create global marks. Having set a mark, we can snap our cursor back to it with the `{letter} command
+- By default, global marks are persisted between editing sessions
+
+Try this: open up your vimrc file and press mV to set a global mark (mnemonic: V for vimrc). Switch to another file and then press `V , and you should snap back to the global mark you set in the vimrc file. Now you can always open up your vimrc file with two keystrokes—that is, unless you set the global V mark to another location
+
+Get into a habit of setting a global mark before using any commands that interact with the quickfix list, such as :grep, :vimgrep, and :make. The same goes for the commands that interact with the buffer and argument lists, such as :args {arglist} and :argdo
+
+You can set up to twenty-six global marks, which is more than you’ll ever need. Use them liberally; set a global mark any time you see something that you might want to snap back to later
+
 todos:
 
 - check out surround.vim plugin(http://github.com/tpope/vim-surround)
+- check out usage of vimgrep and write article about it
 - write article about how vim helped me improve my workflow to contribute to oss(btc-from the cmdline) -> publish it after opening PR
 - dailyinterviewpro -> analyse problem from alreadysolved folder
 - explore vim tutor and make notes
@@ -198,8 +218,8 @@ todos:
 - write medium article (find by character, the quickest way to move around in Vim) -> reference....Tip 50,Practical Vim
 - write medium article about the story of the etymology of vim -> refer to chpt 5 of practical vim
 - create vim version of crontab gru in python(django)
+- write medium article on SIGTERM vs SIGKILL(inspiration -> https://www.cloudbees.com/blog/docker-how-to-stop-and-remove-all-containers-at-once)
 
 
   ...We're waiting for copy before the site can go live, ,;
   ...If you are copy with this, let's go ahead with it...;
-  ...We'll launch as soon as we have the copy..k;
