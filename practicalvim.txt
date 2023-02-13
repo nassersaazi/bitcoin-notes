@@ -206,19 +206,28 @@ Get into a habit of setting a global mark before using any commands that interac
 
 You can set up to twenty-six global marks, which is more than you’ll ever need. Use them liberally; set a global mark any time you see something that you might want to snap back to later
 
+
+Chapter 10 (Copy and Paste)
+- Vim has one named register for each letter of the alphabet. When we address a named register with a lowercase letter, it overwrites the specified register, whereas when we use an uppercase letter, it appends to the specified register
+- When we use the p command in Visual mode, Vim replaces the selection with the contents of the specified register
+- The p command puts the text from a register after the cursor position , whereas the (uppercase) P command inserts text before the cursor position
+- When pasting from a line-wise register, the p and P commands put the text below or above the current line.
+- Vim also provides gp and gP commands. These also put the text before or after the current line, but they leave the cursor positioned at the end of the pasted text instead of at the beginning. The gP command is especially useful when duplicating a range of lines
+
 todos:
 
-- check out surround.vim plugin(http://github.com/tpope/vim-surround)
 - check out usage of vimgrep and write article about it
+- check out surround.vim plugin(http://github.com/tpope/vim-surround)
 - write article about how vim helped me improve my workflow to contribute to oss(btc-from the cmdline) -> publish it after opening PR
 - dailyinterviewpro -> analyse problem from alreadysolved folder
 - explore vim tutor and make notes
 - write medium article about the power of (.) and (*) in vim, and tips & tricks of these symbols when in visual mode
 - write medium article about the replace mode
+- write medium article about registers in vim(inspiration -> practical vim--chapter 10)
 - write medium article (find by character, the quickest way to move around in Vim) -> reference....Tip 50,Practical Vim
 - write medium article about the story of the etymology of vim -> refer to chpt 5 of practical vim
 - create vim version of crontab gru in python(django)
-- write medium article on SIGTERM vs SIGKILL(inspiration -> https://www.cloudbees.com/blog/docker-how-to-stop-and-remove-all-containers-at-once)
+- write medium article on SIGINT vs SIGTERM vs SIGKILL(inspiration -> https://www.cloudbees.com/blog/docker-how-to-stop-and-remove-all-containers-at-once)
 
 
   ...We're waiting for copy before the site can go live, ,;
