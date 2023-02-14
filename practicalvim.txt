@@ -214,9 +214,14 @@ Chapter 10 (Copy and Paste)
 - When pasting from a line-wise register, the p and P commands put the text below or above the current line.
 - Vim also provides gp and gP commands. These also put the text before or after the current line, but they leave the cursor positioned at the end of the pasted text instead of at the beginning. The gP command is especially useful when duplicating a range of lines
 
+Chapter 11(Macros)
+- Macros allow us to record a sequence of changes and then play them back
+- When recording a macro, ensure that every command is repeatable
+
 todos:
 
 - check out usage of vimgrep and write article about it
+- Write article on vim macros(reread chapter 11 of Practical Vim)
 - check out surround.vim plugin(http://github.com/tpope/vim-surround)
 - write article about how vim helped me improve my workflow to contribute to oss(btc-from the cmdline) -> publish it after opening PR
 - dailyinterviewpro -> analyse problem from alreadysolved folder
@@ -230,5 +235,7 @@ todos:
 - write medium article on SIGINT vs SIGTERM vs SIGKILL(inspiration -> https://www.cloudbees.com/blog/docker-how-to-stop-and-remove-all-containers-at-once)
 
 
-  ...We're waiting for copy before the site can go live, ,;
+  ...We're waiting for copy before the site can go live, ,dffslslslweewleqd;
   ...If you are copy with this, let's go ahead with it...;
+
+
