@@ -218,10 +218,32 @@ Chapter 11(Macros)
 - Macros allow us to record a sequence of changes and then play them back
 - When recording a macro, ensure that every command is repeatable
 
+Chapter 12(Matching Patterns and Literals)
+- The “.” symbol has a special meaning: it matches any character
+- When defining a pattern, specifying where a word begins and ends can be useful. Vim’s word-delimiter items let us do that. For example, if we specifically want to match “the” as a word rather than a fragment, we can use word boundary delimiters. In very magic searches, these are represented by the < and > symbols. So if we amended our search to /\v<the> <CR> , it would find only one match in the excerpt
+
+
+Chapter 13(Search)
+- The search prompt always begins with either the / or ? character, which indicates in what direction the search will scan
+
+Command      | Effect
+
+n            | Jump to next match, preserving direction and offset
+N            | Jump to previous match, preserving direction and offset
+/<CR>        | Jump to forward to next match of same pattern
+?<CR>        | Jump to backward to previous match of same pattern
+gn           | Enable character-wise Visual mode and select next search match
+gN           | Enable character-wise Visual mode and select previous search match
+
+:%s///gn     | Count matches in a file with the ':substitute' Command. Note that the command contains three consecutive / characters. The first and second delimit the pattern field, and the second and third delimit the replacement field. Be careful not to omit any of the / characters. Running :%s//gn would replace every match with gn!
+:vimgrep //g %  | Count matches in a file with the ':vimgrep' Command.This command populates the quickfix list with each match found in the current
+buffer. We can go back and forward through matches using the :cnext and :cprev commands
+
 todos:
 
 - check out usage of vimgrep and write article about it
 - Write article on vim macros(reread chapter 11 of Practical Vim)
+- Write article on power of vim's search and how to leverage it (inspiration -> practical vim--chapter 13)
 - check out surround.vim plugin(http://github.com/tpope/vim-surround)
 - write article about how vim helped me improve my workflow to contribute to oss(btc-from the cmdline) -> publish it after opening PR
 - dailyinterviewpro -> analyse problem from alreadysolved folder
@@ -233,9 +255,3 @@ todos:
 - write medium article about the story of the etymology of vim -> refer to chpt 5 of practical vim
 - create vim version of crontab gru in python(django)
 - write medium article on SIGINT vs SIGTERM vs SIGKILL(inspiration -> https://www.cloudbees.com/blog/docker-how-to-stop-and-remove-all-containers-at-once)
-
-
-  ...We're waiting for copy before the site can go live, ,dffslslslweewleqd;
-  ...If you are copy with this, let's go ahead with it...;
-
-
