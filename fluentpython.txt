@@ -1,0 +1,38 @@
+FLUENT PYTHON
+
+Chapter 2(Data Structures)
+- Mastering list comprehensions opens the door to generator expressions, which — among other uses — can produce elements to fill-up sequences of any type
+- List comprehensions, generator expressions and their siblings set and dict comprehen‐ sions now have their own local scope, like functions. Variables assigned within the ex‐ pression are local, but variables in the surrounding scope can still be referenced
+- To initialize tuples, arrays and other types of sequences, you could also start from a listcomp but a genexp saves memory because it yields items one by one using the iterator protocol instead of building a whole list just to feed another constructor.
+- Genexps use the same syntax as listcomps, but are enclosed in parenthesis rather than brackets
+- An elegant application of tuple unpacking is swapping the values of variables without using a temporary variable: e.g. b,a = a,b
+- Sometimes when we only care about certain parts of a tuple when unpacking, a dummy variable like _ is used as placeholder
+- Another way of focusing on just some of the items when unpacking a tuple is to use the *
+
+>>> a, b, *rest = range(5)
+>>> a, b, rest
+(0, 1, [2, 3, 4])
+
+Note that the * prefix can be applied to exactly one variable, but it can appear in any position
+
+- The collections.namedtuple function is a factory that produces subclasses of tuple enhanced with field names and a class name — which helps debugging
+
+Defining and using a named tuple type
+>>> from collections import namedtuple
+>>> City = namedtuple('City', 'name country population coordinates')
+>>> tokyo = City('Tokyo', 'JP', 36.933, (35.689722, 139.691667))
+>>> tokyo
+City(name='Tokyo', country='JP', population=36.933, coordinates=(35.689722, 139.691667))
+>>> tokyo.population
+36.933
+>>> tokyo.coordinates
+(35.689722, 139.691667)
+>>> tokyo[1]
+'JP'
+
+- Slices are not just useful to extract information from sequences, they can also be used to change mutable sequences in-place, that is, without rebuilding them from scratch.
+- When the target of the assignment is a slice, the right-hand side must be an iterable object, even if it has just one item.
+- Repeated concatenation of immutable sequences is inefficient, because instead of just appending new items, the interpreter has to copy the whole target sequence to create a new one with the new items concatenated
+- Putting mutable items in tuples is not a good idea
+- The list.sort method sorts a list in-place, that is, without making a copy. In contrast, the built-in function sorted creates a new list and returns it
+- If you are handling lists of numbers, arrays(instead of lists) are the way to go
