@@ -235,17 +235,18 @@ N            | Jump to previous match, preserving direction and offset
 gn           | Enable character-wise Visual mode and select next search match
 gN           | Enable character-wise Visual mode and select previous search match
 
-:%s///gn     | Count matches in a file with the ':substitute' Command. Note that the command contains three consecutive / characters. The first and second delimit the pattern field, and the second and third delimit the replacement field. Be careful not to omit any of the / characters. Running :%s//gn would replace every match with gn!
-:vimgrep //g %  | Count matches in a file with the ':vimgrep' Command.This command populates the quickfix list with each match found in the current
-buffer. We can go back and forward through matches using the :cnext and :cprev commands
+:%s///gn        | Count matches in a file with the ':substitute' Command. Note that the command contains three consecutive / characters. The first and second delimit the pattern field, and the second and third delimit the replacement field. Be careful not to omit any of the / characters. Running :%s//gn would replace every match with gn!
+:vimgrep //g %  | Count matches in a file with the ':vimgrep' Command.This command populates the quickfix list with each match found in the current buffer. We can go back and forward through matches using the :cnext and :cprev commands
+
+Chapter 15(Global commands)
 
 todos:
 
 - check out usage of vimgrep and write article about it
-- Write article on vim macros(reread chapter 11 of Practical Vim)
-- Write article on power of vim's search and how to leverage it (inspiration -> practical vim--chapter 13)
+- write article on vim macros(reread chapter 11 of practical vim)
+- write article on power of vim's search and how to leverage it (inspiration -> practical vim--chapter 13)
 - check out surround.vim plugin(http://github.com/tpope/vim-surround)
-- write article about how vim helped me improve my workflow to contribute to oss(btc-from the cmdline) -> publish it after opening PR
+- write article about how vim helped me improve my workflow to contribute to oss(btc-from the cmdline) -> publish it after opening pr
 - dailyinterviewpro -> analyse problem from alreadysolved folder
 - explore vim tutor and make notes
 - write medium article about the power of (.) and (*) in vim, and tips & tricks of these symbols when in visual mode
