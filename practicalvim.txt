@@ -18,9 +18,10 @@ cursor directly to it if a match is found
 , command will repeat the last search that the f/F command performed in the reverse direction
 * command executes a search for a word under a cursor
 :vs command does a vertical split
+:sp command does a horizontal split
 Ctrl + W + (hjkl) -> changes to different window in any direction
-Ctrl + W + Ctrl + W -> toggles btn open windows
 vim path/to/folder -> takes you to folder path and prompts file selection
+
 The Dot Formula: One keystroke to Move, One keystroke to Execute
 
 Chapter 2
@@ -34,8 +35,7 @@ vap, then U -> converts paragraph to uppercase
 Chapter 3
 
 J command joins the current and next lines together
-Replace mode is identical to Insert mode, except that it overwrites existing text
-in the document.
+Replace mode is identical to Insert mode, except that it overwrites existing text in the document.
 
 chapter 4(visual mode)
 gv command reselects last visual selection
@@ -52,7 +52,7 @@ Chapter 5(command line mode)
 
 The :copy command (and its shorthand :t) lets us duplicate one or more lines from one part of the document to another, while the :move command lets us place them somewhere else in the document
 
-:%s/Practical/Pragmatic/ -> substitute every occurence in the file of Practical with Pragmatic
+:%s/Practical/Pragmatic/g -> substitute every occurence in the file of Practical with Pragmatic
 :4t. -> copy contents of line 4 to current(where cursor is)
 :t$ -> copy current line to end of file
 :m command is similar to :t command; where :t copies,:m cuts
@@ -63,7 +63,7 @@ The :copy command (and its shorthand :t) lets us duplicate one or more lines fro
 :!ls shows contents of current directory 
 
 q: accesses the command-line window
-q/ Open the command-line window with history of searches
+q/ and q? ->  Open the command-line window with history of searches
 
 recall commands from history with up and down arrows in command mode or search mode
 
@@ -83,7 +83,7 @@ The :ls command gives us a listing of all the buffers that have been loaded into
 
 We can traverse the buffer list using four commands—:bprev and :bnext to move backward and forward one at a time, and :bfirst and :blast to jump to the start or end of the list. 
 
-The argument list (:args) represents the list of files that gets passed as an argument when we run the vim command.We can change the contents of the argument list at any time, which means that the :args listing doesn’t necessarily reflect the values that were passed to the vim command when we launched the editor
+The argument list (:args) represents the list of files that gets passed as an argument when we run the vim command. We can change the contents of the argument list at any time, which means that the :args listing doesn’t necessarily reflect the values that were passed to the vim command when we launched the editor
 
 The argument list is simpler to manage than the buffer list, making it the ideal place to group our buffers into a collection. With the :args {arglist} command, we can clear the argument list and then repopulate it from scratch with a single command. We can traverse the files in the argument list using :next and :prev commands. Or we can use :argdo to execute the same command on each buffer in the set
 
@@ -115,7 +115,7 @@ The % symbol has special meaning on Vim’s command line: it expands to represen
 
 Chapter 8(Navigate Inside Files with Motions)
 
-Vim is optimized for the touch typist Real lines vs Display lines: -> The j and k commands move down and up by real lines, whereas the gj and gk commands move down and up by display lines
+Vim is optimized for the touch typist. Real lines vs Display lines: -> The j and k commands move down and up by real lines, whereas the gj and gk commands move down and up by display lines
 
 Command      | Effect
 

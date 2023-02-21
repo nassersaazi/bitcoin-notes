@@ -18,6 +18,7 @@ Note that the * prefix can be applied to exactly one variable, but it can appear
 - The collections.namedtuple function is a factory that produces subclasses of tuple enhanced with field names and a class name — which helps debugging
 
 Defining and using a named tuple type
+
 >>> from collections import namedtuple
 >>> City = namedtuple('City', 'name country population coordinates')
 >>> tokyo = City('Tokyo', 'JP', 36.933, (35.689722, 139.691667))
@@ -36,3 +37,37 @@ City(name='Tokyo', country='JP', population=36.933, coordinates=(35.689722, 139.
 - Putting mutable items in tuples is not a good idea
 - The list.sort method sorts a list in-place, that is, without making a copy. In contrast, the built-in function sorted creates a new list and returns it
 - If you are handling lists of numbers, arrays(instead of lists) are the way to go
+
+
+Chapter 3(Dictionaries and Sets)
+
+- A dictcomp(rehension) builds a dict instance by producing key:value pair from any iterable
+- A set is a collection of unique objects. A basic use case is removing duplication:
+
+>>> l = ['spam', 'spam', 'eggs', 'spam']
+>>> set(l)
+{'eggs', 'spam'}
+>>> list(set(l))
+['eggs', 'spam']
+
+- In addition to guaranteeing uniqueness, the set types implement the essential set oper‐ ations as infix operators, so, given two sets a and b, a | b returns their union, a & b computes the intersection, and a - b the difference
+- Smart use of set operations can reduce both the line count and the run time of Python programs, at the same time making code easier to read and reason about — by removing loops and lots of conditional logic. For example, imagine you have a large set of e-mail addresses (the haystack) and a smaller set of addresses (the needles) and you need to count how many of the nee dles occur in the haystack. Thanks to set intersection (the & operator) you can code that in a simple line:
+
+>>> found = len(needles & haystack)
+
+- Because a dict uses a hash table internally, and hash tables must be sparse to work, they are not space efficient
+- Optimization is the altar where maintainability is sacrificed
+- If you need to scan and add items to a dictionary, do it in two steps: read the dict from start to finish and collect the needed additions in a second dict. Then update the first one with it.
+
+1. Set elements must be hashable objects.
+2. Sets have a significant memory overhead.
+3. Membership testing is very efficient.
+4. Element ordering depends on insertion order.
+5. Adding elements to a set may change the order of other elements.
+
+The hash table implementation underlying dict and set is extremely fast. Understand‐
+ing its logic explains why items are apparently unordered and may even be reordered
+behind our backs. There is a price to pay for all this speed, and the price is in memory.
+
+todos
+- write article on the python dictionary(look at this resource for inspiration <http://pyvideo.org/video/276/the-mighty-dictionary-55>, reread stuff on dictionaries in chapter 3 of fluent python)
