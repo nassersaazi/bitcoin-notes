@@ -96,6 +96,7 @@ Command           | Effect
 <c-w>l            | Focus the window to the right
 <c-w>c            | Close the active window
 <c-w>o            | Keep only active window ,closing all others
+<c-w>=            | Make windows have the same width
 :tabe {filename}  | Open {filename} in a new tab
 :tabc             | Close current tab page and all of its windows
 :tabo             | Keep the active tab page, closing all others
@@ -265,8 +266,29 @@ g<C-]>           | Prompt user to select from multiple matches for the word unde
 :tlast           | Jump to last matching tag
 :tselect         | Prompt user to choose an item from the tag match list
 
+
+Chapter 17(Compile code and navigate errors with a Quickfix list)
+
+Commands for working with the Quickfix list
+
+:cnext       | Jump to next item
+:cprev       | Jump to previous item
+:cfirst       | Jump to first item
+:clast       | Jump to last item
+:cnfile       | Jump to first item in next file
+:cpfile       | Jump to last item in previous file
+:cc N       | Jump to nth item
+:copen       | Open the quickfix window
+:cclose       | Close the quickfix window
+:cdo {cmd}       | Execute {cmd} on each line listed in the quickfix list
+:cfdo {cmd}       | Execute {cmd} once for each file listed in the quickfix list
+
+-----to be continued.....
+
 todos:
 
+- made shortcuts for quickfix, buffer and location lists(refer to page 85 => practical vim)
+- figure out how to compile js and py files from inside vim
 - check out usage of vimgrep and write article about it
 - write article on vim macros(reread chapter 11 of practical vim)
 - write article on vim ctags(reread chapter 16 of practical vim)
