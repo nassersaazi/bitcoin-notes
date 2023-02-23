@@ -69,5 +69,13 @@ The hash table implementation underlying dict and set is extremely fast. Underst
 ing its logic explains why items are apparently unordered and may even be reordered
 behind our backs. There is a price to pay for all this speed, and the price is in memory.
 
+Chapter 4(Text vs Bytes)
+- UTF-8 is the default source encoding for Python 3
+- Now that Python 3 source code is no longer limited to ASCII and defaults to the excellent UTF-8 encoding, the best “fix” for source code in legacy encodings like 'cp1252' is to convert them to UTF-8
+- Code that has to run on multiple machines or on multiple occasions should never depend on encoding defaults. Always pass an explicit encoding= argument when opening text files, because the default may change from one machine to the next, or from one day to the next
+
+resources
+- https://nedbatchelder.com/text/unipain.html
+
 todos
 - write article on the python dictionary(look at this resource for inspiration <http://pyvideo.org/video/276/the-mighty-dictionary-55>, reread stuff on dictionaries in chapter 3 of fluent python)
