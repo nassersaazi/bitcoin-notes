@@ -283,7 +283,9 @@ Commands for working with the Quickfix list
 :cdo {cmd}       | Execute {cmd} on each line listed in the quickfix list
 :cfdo {cmd}       | Execute {cmd} once for each file listed in the quickfix list
 
------to be continued.....
+Chapter 18(Search Project-wide)
+
+- :vim //g ## -> search for the most recent search term for all files in the argument list. One thing to watch out for with this command is that it will always use the current values from the argument list and search history. If we repeat this command later, it may behave differently depending on what’s in our argument list and search history
 
 todos:
 
