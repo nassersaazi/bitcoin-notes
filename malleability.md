@@ -62,13 +62,13 @@ Segwit stands for “segregated witness,” and “witness” is just another wo
 
 First we need to distinguish between legacy transactions(transaction formats before Segwit was activated) and Segwit transactions. For purposes of this explanation, a simplified version of a legacy Bitcoin transaction looks like this:
 
-'''
+```
 Tx: {
     Input: [(<previous TxID>,<tx output #>), ...],
     Output: [(<destination addresses>, <amount>), ...],
     Signature: [(<TxIDs>, <TxID’s relevant cryptographic signature(s)>)]
 }
-'''
+```
 
 TxID stands for Transaction ID, and is the hash of some transaction in a block. Note that it’s not part of the transaction itself, but calculated based on the contents of the transaction.
 
@@ -83,20 +83,20 @@ Notice that the signature is part of the transaction in this format.
 
 On the other hand, a Segwit transaction looks like this:
 
-'''
+```
 Tx: {
     Input: [(<previous TxID>,<tx output #>), ...],
     Output: [(<destination addresses>, <amount>), ...],
 }
-'''
+```
 
 And somewhere else in the block, we have the signature of the transaction as follows:
 
-'''
+```
 Sig: {
     Signature: [(TxID, <Input TxID’s relevant cryptographic signature(s)>)]
 }
-'''
+```
 
 Segwit made it so that signatures, scripts, and stack items are all stored in a separate part of the transaction which everyone would ignore for the purposes of transaction id calculation. It further does this only for a subset of scripts so that it can remain backwards compatible. In this way, instead of figuring out what could be malleable and explicitly enumerating them, it just takes everything that could be malleable and puts it somewhere else. However Segwit is not a perfect solution because:
 - Things that were malleable previously still are malleable
