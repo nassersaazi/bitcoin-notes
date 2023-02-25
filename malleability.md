@@ -22,7 +22,7 @@ Scenario 1
 -- Give beneficiaries names and plausible use cases in real world to demonstrate point 
 
 
-So what exactly is transaction malleability?
+## So what exactly is transaction malleability?
 
 The word malleate means to form—for example, metal with a hammer. This term is used in cryptography to mean changing a signature without making it invalid or changing an encrypted message without making it totally garbled.
 
@@ -44,7 +44,7 @@ Malleability first became noticeable when wallet software would have issues beca
 Transaction malleation was also noticed to be a major hindrance in contracting protocols such as Lightning. These protocols rely on the transaction ID not changing as they are pre-signing transactions that refer to a transaction that has not been broadcast yet. If the first transaction is malleated, and the counterparty is not cooperating (perhaps they malleated the first), then funds could be lost. Resolving these issues so that such protocols can work would require a solution that removes both third and first party malleation.
 
 
-Technical flaws leading to transaction malleability
+## Technical flaws leading to transaction malleability
 
 The first flaw is that the original Bitcoin implementation used OpenSSL to verify the DER-encoded ASN.1 transaction data. However, OpenSSL did not do strict validation of the ASN.1 data by default. For instance, OpenSSL would ignore extra padding in the data. Just like adding trailing whitespace to a C file won't change the semantic meaning of the C code, Bob could add extra padding data to the transaction. This padding changes the transaction hash, just as adding trailing whitespace to a source code file would change the file hash.
 
@@ -56,19 +56,19 @@ In layman terms, one can produce a new valid signature for a transaction, given 
 
 The fix for the ECDSA signing flaw is to enforce a canonical signature representation. Bitcoin core developers decided to use the following scheme: both signature values are calculated, but only the signature with the smaller "S-value" is considered valid. That is, the correct representation is the form with the smaller unsigned integer representation. The ECDSA signing flaw was originally supposed to be fixed by BIP62, which was later withdrawn. However, Bitcoin Core added a mechanism to enforce low S-values with PR #6769, which was merged in Bitcoin Core in October 2015. Validation is done when the transaction script contains the opcode SCRIPT_VERIFY_LOW_S, which all recent Bitcoin implementations use.
 
-How segwit fixed the problem
+## How segwit fixed the problem
 
 Segwit stands for “segregated witness,” and “witness” is just another word for the signature. This is a bitcoin upgrade that aimed to, among other things, move signature data out of transactions.
 
-First we need to distinguish between legacy transactions(transaction formats before Segwit was activated) and Segwit transactions.
+First we need to distinguish between legacy transactions(transaction formats before Segwit was activated) and Segwit transactions. For purposes of this explanation, a simplified version of a legacy Bitcoin transaction looks like this:
 
-For purposes of this explanation, a simplified version of a legacy Bitcoin transaction looks like this:
-
+'''
 Tx: {
     Input: [(<previous TxID>,<tx output #>), ...],
     Output: [(<destination addresses>, <amount>), ...],
     Signature: [(<TxIDs>, <TxID’s relevant cryptographic signature(s)>)]
 }
+'''
 
 TxID stands for Transaction ID, and is the hash of some transaction in a block. Note that it’s not part of the transaction itself, but calculated based on the contents of the transaction.
 
@@ -83,17 +83,20 @@ Notice that the signature is part of the transaction in this format.
 
 On the other hand, a Segwit transaction looks like this:
 
+'''
 Tx: {
     Input: [(<previous TxID>,<tx output #>), ...],
     Output: [(<destination addresses>, <amount>), ...],
 }
+'''
 
 And somewhere else in the block, we have the signature of the transaction as follows:
 
+'''
 Sig: {
     Signature: [(TxID, <Input TxID’s relevant cryptographic signature(s)>)]
 }
-
+'''
 
 Segwit made it so that signatures, scripts, and stack items are all stored in a separate part of the transaction which everyone would ignore for the purposes of transaction id calculation. It further does this only for a subset of scripts so that it can remain backwards compatible. In this way, instead of figuring out what could be malleable and explicitly enumerating them, it just takes everything that could be malleable and puts it somewhere else. However Segwit is not a perfect solution because:
 - Things that were malleable previously still are malleable
@@ -104,7 +107,7 @@ Segwit transactions continue to include a legacy txid, but also include a wtxid 
 
 Note: Segwit transactions only avoid malleability if all their inputs are segwit spends (either directly, or via a backwards compatible segwit P2SH address).
 
-Who benefited from Segwit?
+### Who benefited from Segwit?
 
 - Wallet authors tracking spent bitcoins: it’s easiest to monitor the status of your own outgoing transactions by simply looking them up by transaction id. But in a system with third-party malleability, wallets must implement extra code to be able to deal with changed txids.
 
@@ -118,8 +121,7 @@ Who benefited from Segwit?
 
 Although transaction malleablity might not have been subtle to the existence of Bitcoin ,the fixing it was crucial to the scaling of the Bitcoin network and for increasing the adoption of Bitcoin worldwide. Segwit included a lot of improvements to Bitcoin ,and fixing transaction malleability was just one of those improvements. 
 
-
-references
+## References
 
 - https://bitcoin.stackexchange.com/questions/21994/what-is-transaction-malleability
 - https://www.ccn.com/mt-gox-blames-bitcoin-core-developer-greg-maxwell-responds/
