@@ -75,6 +75,8 @@ On Vim’s command line, the % symbol is shorthand for the current file name
 
 Ctrl-z suspends vim and gets to the bash terminal .fg command brings back a recently suspended vim session
 
+:com Gs Git status -> set an alias for "git status command in vim"
+
 Chapter 6 (Manage multiple files)
 
 Files are stored on the disk, whereas buffers exist in memory. When we open a file in Vim, its contents are read into a buffer, which takes the same name as the file. Initially, the contents of the buffer will be identical to those of the file, but the two will diverge as we make changes to the buffer. If we decide that we want to keep our changes, we can write the contents of the buffer back into the file. Most Vim commands operate on buffers, but a few operate on files, including the :write, :update, and :saveas commands
@@ -86,6 +88,12 @@ We can traverse the buffer list using four commands—:bprev and :bnext to move 
 The argument list (:args) represents the list of files that gets passed as an argument when we run the vim command. We can change the contents of the argument list at any time, which means that the :args listing doesn’t necessarily reflect the values that were passed to the vim command when we launched the editor
 
 The argument list is simpler to manage than the buffer list, making it the ideal place to group our buffers into a collection. With the :args {arglist} command, we can clear the argument list and then repopulate it from scratch with a single command. We can traverse the files in the argument list using :next and :prev commands. Or we can use :argdo to execute the same command on each buffer in the set
+
+Rather than browse the ouput of the :ls command and delete (unload, wipe..) a buffer by specifying its number, using file names is often more effective.  For instance, after I opened a couple of .txt file to refresh my memories of some fine point.. copy and paste a few lines of text to use as a template of sorts.. etc. I would type the following:
+
+:bd txt <Tab> 
+
+Note that the matching string does not have to be at the start of the file name.  The above displays the list of file names that match 'txt' at the bottom of the screen and keeps the :bd command I initially typed untouched, ready to be completed.
 
 Command           | Effect
 
@@ -287,8 +295,27 @@ Chapter 18(Search Project-wide)
 
 - :vim //g ## -> search for the most recent search term for all files in the argument list. One thing to watch out for with this command is that it will always use the current values from the argument list and search history. If we repeat this command later, it may behave differently depending on what’s in our argument list and search history
 
+Chapter 19(Dial X for Autocompletion)
+
+-  <C-n> followed immediately by <C-p> -> The first command invokes autocomplete, summons the pop-up menu, and selects the first item in the word list. The second command selects the previous item in the word list, taking us back to where we started but without dismissing the pop-up menu. Now we can continue to type, and Vim will filter the word list in real time.  This can be especially handy if the word list contains too many suggestions to read in one visual gulp
+- Line-wise autocompletion is triggered by running <C-x><C-l>. The beauty of line-wise autocompletion is that we don’t have to know the location of the line we’re duplicating. We need to know only that it exists.  After typing out the first few characters, we hit <C-x><C-l>
+
+Command          | Type of Completion
+
+<C-n>            | Generic keywords
+<C-x><C-n>       | Current buffer keywords
+<C-x><C-i>       | Current file keywords
+<C-x><C-]>       | tags file keywords
+<C-x><C-k>       | Dictionary lookup
+<C-x><C-l>       | Whole line completion
+<C-x><C-f>       | Filename completion
+<C-x><C-o>       | Omni-completion
+
+
+
 todos:
 
+- read https://vonheikemen.github.io/devlog/tools/vim-and-the-quickfix-list
 - made shortcuts for quickfix, buffer and location lists(refer to page 85 => practical vim)
 - figure out how to compile js and py files from inside vim
 - check out usage of vimgrep and write article about it
