@@ -1,26 +1,11 @@
 # Transaction malleability in Bitcoin: what is it and why it matters
 
-Article structure
 
-- Define problem set 
-   - demo how hard it is to make btc micropayments onchain and how important it is to scale btc offchain
-   - demo how difficult this scaling is since you have to depend on unconfirmed transactions
-- Describe malleability
-- Describe malleability solutions
+One of the most fundamental properties of Bitcoin as a medium of exchange is that transactions, once made, remain valid and cannot be double spent. When Alice pays Bob, she wants the assurance that the payment made can never be invalidated. This is critical to the existence of the Bitcoin network. 
 
+But imagine this scenario involving cheques: Alice buys some groceries from Bob's shop. As payment, Alice hands Bob a cheque that matures in a week. But some time before the week elapses, Bob manages to form the exact cheque and forge Alice's signature, then takes his forged cheque to the bank and gets the money. However, Bob also still has Alice's original cheque and when he takes it to the bank too, it is deemed invalid since according to the bank, the money has already been spent. Bob informs Alice of this unfortunate occurrence. Alice usually checks her bank balance through a bank app that sloppily displays inaccurate balances for customers, making them think they have more money than is the case. Due to this loophole, Bob manages to convince Alice to make another cheque for the same groceries, essentially paying Bob more than once.
 
-One of the most important use cases for bitcoin is making payments at scale, big or small, across anywhere in the world at any time, instantly. This is a non-trivial problem because of all the trade-offs we have to balance. 
-
-
-
-
-
-Thought experiment:
-Scenarios......
-Scenario 1
-
--- Give beneficiaries names and plausible use cases in real world to demonstrate point 
-
+We can say Alice's cheque has been malleated. If Bob can pull off this shady scheme a couple of more times, Alice may end up bankrupt. Notice that Alice's cheques are valid at the time she signs them, but because she never double checks her balances accurately, and the bank accepts only one cheque of any given signature, Bob is able to frontrun her cheques at the bank with his forged ones at redemption time. Though this scenario is not exactly similar to what I am about to explain in this post, it is quite close.
 
 ## So what exactly is transaction malleability?
 
@@ -119,7 +104,7 @@ Note: Segwit transactions only avoid malleability if all their inputs are segwit
 
 ## Conclusion
 
-Although transaction malleablity might not have been subtle to the existence of Bitcoin ,the fixing it was crucial to the scaling of the Bitcoin network and for increasing the adoption of Bitcoin worldwide. Segwit included a lot of improvements to Bitcoin ,and fixing transaction malleability was just one of those improvements. 
+Although transaction malleablity might not have been a critical existential threat  to Bitcoin, fixing it was crucial to the scaling of the Bitcoin network and for increasing the adoption of Bitcoin worldwide. Segwit included a lot of improvements to Bitcoin, and fixing transaction malleability was just one of them.
 
 ## References
 
