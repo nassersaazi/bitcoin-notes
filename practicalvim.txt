@@ -65,6 +65,8 @@ The :copy command (and its shorthand :t) lets us duplicate one or more lines fro
 q: accesses the command-line window
 q/ and q? ->  Open the command-line window with history of searches
 
+:%bd|e# -> delete all buffers apart from the current one
+
 recall commands from history with up and down arrows in command mode or search mode
 
 when a visual selection is made(eg Vjj) norm . in command mode executes the last normal mode command on the selected lines
@@ -311,8 +313,8 @@ Command          | Type of Completion
 <C-x><C-f>       | Filename completion
 <C-x><C-o>       | Omni-completion
 
-
-
+- <C-x><C-p> -> helps to autocomplete sequences of words. When we use autocomplete to expand a word, Vim remembers the context from which that word was taken. If we invoke autocomplete a second time, Vim will insert the word that followed the original completion. We can repeat this again and again to fill in entire sequences of words. This can often produce results faster than using copy and paste to duplicate phrases
+- we can change our working directory at any time using the :cd {path} command
 todos:
 
 - read https://vonheikemen.github.io/devlog/tools/vim-and-the-quickfix-list
