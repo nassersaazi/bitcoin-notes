@@ -315,6 +315,23 @@ Command          | Type of Completion
 
 - <C-x><C-p> -> helps to autocomplete sequences of words. When we use autocomplete to expand a word, Vim remembers the context from which that word was taken. If we invoke autocomplete a second time, Vim will insert the word that followed the original completion. We can repeat this again and again to fill in entire sequences of words. This can often produce results faster than using copy and paste to duplicate phrases
 - we can change our working directory at any time using the :cd {path} command
+
+Chapter 20(Find and Fix Typos with Vim's Spell Checker)
+
+Normal mode spell checker commands
+
+Command      | Effect 
+
+]s           | Jump to next spelling error  
+[s           | Jump to previous spelling error  
+z=           | Suggest corrections for current word
+zg           | Add current word to spell file
+zw           | Remove current word from spell file
+zug           | Revert zg or zw command for current word
+
+Chapter 21(Das Ende)
+- Includes notes on customising vimrc
+
 todos:
 
 - read https://vonheikemen.github.io/devlog/tools/vim-and-the-quickfix-list
