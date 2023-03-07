@@ -32,3 +32,49 @@ Option          | Description
 -<n>              | Show only the last n commits
 
 ----to be continued---
+
+Undoing things
+- If you commit and then realize you forgot to stage the changes in a file you wanted to add to this commit, you can do something like this:
+    $ git commit -m 'Initial commit'
+    $ git add forgotten_file
+    $ git commit --amend
+    You end up with a single commit — the second commit replaces the results of the first
+
+Pushing to your remotes
+
+- Git supports two types of tags: lightweight and annotated.
+- A lightweight tag is very much like a branch that doesn’t change — it’s just a pointer to a specific commit.
+- Annotated tags, however, are stored as full objects in the Git database. They’re checksummed; contain the tagger name, email, and date; have a tagging message; and can be signed and verified with GNU Privacy Guard (GPG). It’s generally recommended that you create annotated tags so you can have all this information; but if you want a temporary tag or for some reason don’t want to keep the other information, lightweight tags are available too
+- If you have a lot of tags that you want to push up at once, you can use the --tags option to the git push command. This will transfer all of your tags to the remote server that are not already there
+
+Chapter 3(Git branching)
+- Git doesn’t store data as a series of changesets or differences, but instead as a series of snapshots
+- by default, git log will only show commit history below the branch you’ve
+checked out. To show commit history for the desired branch you have to explicitly specify it: e.g. git log testing. To show all of the branches, add --all to your git log command
+- When you switch branches in Git, files in your working directory will change. If you switch to an older branch, your working directory will be reverted to look like it did the last time you committed on that branch. If Git cannot do it cleanly, it will not let you switch at all.
+- The useful --merged and --no-merged options can filter this list to branches that you have or have not yet merged into the branch you’re currently on. To see which branches are already merged into the branch you’re on, you can run git branch --merged
+- Having multiple long-running branches isn’t necessary, but it’s often helpful, especially when you’re dealing with very large or complex projects
+- To set up a local branch with a different name than the remote branch, you can easily use the first version with a different local branch name:
+    git checkout -b sf origin/serverfix
+    Branch sf set up to track remote branch serverfix from origin.
+    Switched to a new branch 'sf'
+- Now, your local branch sf will automatically pull from origin/serverfix.
+- If you already have a local branch and want to set it to a remote branch you just pulled down, or want to change the upstream branch you’re tracking, you can use the -u or --set-upstream-to option to git branch to explicitly set it at any time.
+- If you want to see what tracking branches you have set up, you can use the -vv option to git branch.  This will list out your local branches with more information including what each branch is tracking and if your local branch is ahead, behind or both i.e (git branch -vv)
+- While the git fetch command will fetch all the changes on the server that you don’t have yet, it will not modify your working directory at all. It will simply get the data for you and let you merge it yourself
+- Generally it’s better to simply use the fetch and merge commands explicitly as the magic of git pull
+can often be confusing
+- git fetch --all -> get all changes from remotes ,but don't merge
+- Rebasing replays changes from one line of work onto another in the order they were introduced, whereas merging takes the endpoints and merges them together. There is no difference in the end product of the integration, but rebasing makes for a cleaner history
+- To safely merge a git branch (eg test) into master locally
+    git checkout master
+    git pull
+    git checkout test
+    git pull
+    git rebase -i master
+    git checkout master
+    git merge test
+- Do not rebase commits that exist outside your repository and that people may have based
+work on
+
+Chapter 4(Git on the server)
