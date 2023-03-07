@@ -1,0 +1,18 @@
+Fedimint, an open-source protocol that leverages federated Chaumian Ecash mints to decentralize bitcoin custody and enhance the scaling capabilities of the currency
+
+Unlike Chaum’s original vision <<describe that vision in the paragraphs prior>> of a company that would issue e-cash tokens, and run as a single point of failure, Sirion thought that Bitcoin’s programmable money could enable a federated alternative, where a group of users could control the mint and sign off on transactions through consensus. This way, instead of just one person being able to steal funds or cave to regulatory pressure, a majority would need to collude or give in. The consensus algorithm to achieve group approval of transactions would be a novel mechanism based on technology pioneered by Blockstream. Chaumian mints could vastly improve the privacy given by traditional custodians, and by adding federated control, the risk of theft could be significantly reduced
+
+References
+- https://bitcoinmagazine.com/technical/how-fedimint-scales-bitcoin-custody
+
+
+
+https://bitcoinmagazine.com/technical/fedimint-adds-new-bitcoin-custody-solutions
+https://bitcoinmagazine.com/culture/will-fedimints-bring-bitcoin-to-the-world
+https://bitcoinmagazine.com/technical/fediment-evolution-of-bitcoin-custody
+https://bitcoinmagazine.com/technical/what-is-the-future-of-bitcoin-privacy
+https://bitcoinmagazine.com/technical/public-fedimint-testnet-launched-on-signet
+https://bitcoinmagazine.com/business/fedi-global-bitcoin-adoption-tech
+https://bitcoinmagazine.com/technical/list-of-bitcoin-privacy-proposals
+
+https://nopara73.medium.com/chaumian-e-cash-for-custodial-bitcoin-wallets-and-services-to-scale-bitcoin-8977d9a03064
