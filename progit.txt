@@ -1,0 +1,34 @@
+pro git book
+
+Git Basics
+- If you run git status -s or git status --short you get a far more simplified output from the command
+- Comprehensive list of good .gitignore file examples for dozens of projects and languages at https://github.com/github/gitignore
+- For an even more explicit reminder of what you’ve modified, you can pass the -v option to git commit. Doing so also puts the diff of your change in the editor so you can see exactly what changes you’re committing.
+- git log -p -2 --no-merges -> shows the difference introduced in the last two commits, minus merge commits
+- git --stat -p -2 --no-merges -> shows some abbreviated statistics for the last two commits, minus merge commits
+- git log --since=2.weeks -> lists commits made in the last two weeks. This command works with lots of formats — you can specify a specific date like "2008-01-15", or a relative date such as "2 years 1 day 3 minutes ago". You can also filter the list to commits that match some search criteria. The --author option allows you to filter on a specific author, and the --grep option lets you search for keywords in the commit messages
+- It’s possible that a sizable percentage of the commits in log history are just merge commits, which typically aren’t very informative. To prevent the display of merge commits cluttering up log history, simply add the log option --no-merges
+- git checkout -- <file> is a dangerous command. Any local changes you made to that file are gone — Git just replaced that file with the last staged or committed version. Don’t ever use this command unless you absolutely know that you don’t want those unsaved local changes
+
+
+
+Common options to git log
+
+Option          | Description
+-p              | Show the patch introduced in each commit
+
+----to be continued---
+
+- The -S option takes a string and shows only those commits that changed the number of occurrences of that string. For instance, if you wanted to find the last commit that added or removed a reference to a specific function, you could call:
+    -> git log -S function_name
+
+- If you specify a directory or file name, you can limit the log output to commits that introduced a change to those files. This is always the last option and is generally preceded by double dashes (--) to separate the paths from the options:
+    -> git log -- path/to/file
+
+
+Options to limit the output of git log
+
+Option          | Description
+-<n>              | Show only the last n commits
+
+----to be continued---
